@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Scandal Details</title>
+    <link rel="stylesheet" th:href="@{/css/styles.css}">
+</head>
+<body>
+<div class="container">
+    <h1 th:text="${scandal.name}">Scandal Name</h1>
+    <p class="description" th:text="${scandal.description}">Description goes here...</p>
+
+    <h3>Politicians involved:</h3>
+    <ul>
+        <li th:each="p : ${scandal.politicians}">
+            <span th:text="${p.firstName + ' ' + p.lastName}">Name</span> -
+            Embezzled: <span th:text="${p.confirmedEmbezzledAmountOfMoney}">0</span>
+        </li>
+    </ul>
+
+    <div class="footer">
+        <a th:href="@{/all-scandals/overall}" class="btn">Back to list</a>
+    </div>
+</div>
+</body>
+</html>

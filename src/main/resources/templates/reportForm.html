@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Report a Scandal</title>
+    <link rel="stylesheet" th:href="@{/css/styles.css}">
+</head>
+<body>
+<div class="container">
+    <h1>Report a New Scandal</h1>
+    <form th:action="@{/report/request}" th:object="${report}" method="post">
+
+        <div class="form-group">
+            <label>Scandal Name:</label>
+            <input type="text" th:field="*{name}" />
+            <span class="error" th:if="${#fields.hasErrors('name')}" th:errors="*{name}">Name Error</span>
+        </div>
+
+        <div class="form-group">
+            <label>Description:</label>
+            <textarea th:field="*{description}"></textarea>
+            <span class="error" th:if="${#fields.hasErrors('description')}" th:errors="*{description}">Desc Error</span>
+        </div>
+
+        <button type="submit" class="btn-primary">Submit Request</button>
+        <a th:href="@{/all-scandals/overall}" class="btn">Cancel</a>
+    </form>
+</div>
+</body>
+</html>3

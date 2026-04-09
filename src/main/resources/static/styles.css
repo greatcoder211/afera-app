@@ -1,0 +1,8 @@
+.scandal-box {
+    border: 1px solid #ccc;
+    padding: 20px;
+    margin-bottom: 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+}
+h2 { color: #d9534f; }
