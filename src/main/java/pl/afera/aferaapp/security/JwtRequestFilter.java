@@ -30,12 +30,11 @@ public class JwtRequestFilter extends OncePerRequestFilter {
                                     HttpServletResponse response,
                                     FilterChain filterChain) throws ServletException, IOException {
 
-        // 1. Wyciągamy nagłówek "Authorization"
         final String authHeader = request.getHeader("Authorization");
 
         String username = null;
         String jwt = null;
-
+//didn't check anything, except this one line
         // 2. Sprawdzamy, czy nagłówek istnieje i zaczyna się od "Bearer "
         if (authHeader != null && authHeader.startsWith("Bearer ")) {
             jwt = authHeader.substring(7); // Wycinamy "Bearer "
