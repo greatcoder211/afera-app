@@ -24,17 +24,13 @@ public class ScandalReportController {
     public ScandalReportController(ScandalReportRepository scandalReportRepository) {
         this.scandalReportRepository = scandalReportRepository;
     }
-/*    @GetMapping("/request")
-    public String requestScandalReport(Model model){
-        model.addAttribute("report", new ScandalReport());
-        return "reportForm";
-    }*/
     @GetMapping("/show")
+    @ModelAttribute("report")
     public String showReportForm(Model model) {
         model.addAttribute("report", new ScandalReport());
         return "reportForm";
     }
-    @PostMapping("/request")
+    @PostMapping()
     public String requestScandalReport(@Valid @ModelAttribute("report") ScandalReport report, Errors errors) {
         if(errors.hasErrors()){
             return "reportForm";
@@ -44,3 +40,4 @@ public class ScandalReportController {
         return "redirect:/all-scandals";
     }
 }
+

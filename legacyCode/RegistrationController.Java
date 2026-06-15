@@ -1,4 +1,3 @@
-package pl.afera.aferaapp.controller;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -31,7 +30,7 @@ public class RegistrationController {
 
     @PostMapping
     public String processRegistration(@Valid RegistrationForm form,
-                                        Errors registrationErrors) {
+                                      Errors registrationErrors) {
         if(registrationErrors.hasErrors()) {
             return "registration";
         }

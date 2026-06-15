@@ -13,14 +13,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Data
-@RequiredArgsConstructor(access = AccessLevel.PROTECTED)
-@AllArgsConstructor(access = AccessLevel.PROTECTED)
+@RequiredArgsConstructor(access = AccessLevel.PUBLIC)
+@AllArgsConstructor(access = AccessLevel.PUBLIC)
 @Entity
 public class Scandal {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
+    private String description;
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
     @NotNull

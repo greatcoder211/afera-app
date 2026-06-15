@@ -21,17 +21,17 @@ import java.util.List;
 @Controller
 @RequestMapping("/all-scandals")
 public class ScandalListController {
-    private ScandalRepository scandalRepository;
+    private final ScandalRepository scandalRepository;
     public ScandalListController(ScandalRepository scandalRepository) {
         this.scandalRepository = scandalRepository;
     }
-    @GetMapping("/overall")
+    @GetMapping()
     public String overall(Model model){
         Iterable<Scandal> scandals = scandalRepository.findAll();
         model.addAttribute("scandals", scandals);
-        return  "all-scandals";
+        return "all-scandals";
     }
-    @GetMapping("/specific/{id}")
+    @GetMapping("/{id}")
     public String specificScandals(@PathVariable("id") Long id,Model model){
         Scandal scandal = scandalRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Takiej afery nie mamy jeszcze w naszej bazie!"));

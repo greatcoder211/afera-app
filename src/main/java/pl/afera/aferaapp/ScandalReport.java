@@ -9,10 +9,13 @@ import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 import org.hibernate.validator.constraints.URL;
 
+import java.util.List;
+import java.util.Optional;
+
 @Data
 //@RequiredArgsConstructor
 @NoArgsConstructor
-@Table(name = "Scandal_Report")
+@Table(name = "scandal_reports")
 @Entity
 public class ScandalReport {
     @Id
@@ -24,4 +27,5 @@ public class ScandalReport {
     @Size(min = 5, message = "Minimum 5 znaków")
     private String scandalDescription;
     private String sources;
+    private String additionalComments;
 }

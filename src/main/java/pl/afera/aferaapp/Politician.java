@@ -6,6 +6,8 @@ import jakarta.persistence.GenerationType;
 import lombok.*;
 import jakarta.persistence.Id;
 import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.List;
 
 @Data
 @NoArgsConstructor(access = AccessLevel.PROTECTED, force = true)
@@ -16,6 +18,9 @@ public class Politician {
     private Long id;
     private String firstName;
     private String lastName;
+    private List<Membership> memberships = new ArrayList<>();
+    //ile ukradł
     private BigDecimal confirmedEmbezzledAmountOfMoney;
+    //ile możliwie ukradł
     private BigDecimal unconfirmedEmbezzledAmountOfMoney;
 }

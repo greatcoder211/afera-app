@@ -21,12 +21,13 @@ public class Party {
     private String name;
     @ManyToMany(targetEntity = Politician.class)
     @JoinTable(
-            name = "Party_Politicians",
+            name = "party_politicians",
             joinColumns = @JoinColumn(name = "party"),
             inverseJoinColumns = @JoinColumn(name = "politician")
     )
     @Size(min = 1, message="Partia musi mieć przynajmniej jednego członka")
     private List<Politician> members = new ArrayList<>();
+//TODO: tutaj poniższe dwa pola
     private BigDecimal confirmedEmbezzledAmountOfMoney;
     private BigDecimal unconfirmedEmbezzledAmountOfMoney;
 }
