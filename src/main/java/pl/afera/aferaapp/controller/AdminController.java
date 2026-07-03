@@ -1,15 +1,18 @@
 package pl.afera.aferaapp.controller;
 
+import org.hibernate.engine.spi.ManagedEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import pl.afera.aferaapp.Scandal;
-import pl.afera.aferaapp.ScandalReport;
+import pl.afera.aferaapp.model.*;
 import pl.afera.aferaapp.repository.ScandalReportRepository;
 import pl.afera.aferaapp.repository.ScandalRepository;
+
+import java.util.HashSet;
+import java.util.Set;
 
 @Controller
 @RequestMapping("/admin")
@@ -36,8 +39,13 @@ public class AdminController {
 
     @PostMapping("/add")
     public String processAdd(Scandal scandal) {
+        Set<Party> associatedParties = new HashSet<>();
+        for(Politician politician: scandal.getAssociatedPoliticians()){
+            politician.getMemberships().stream()
+                    .filter(m -> m.getEntryDate().getYear() <= scandal.getEndYear() && m.getDepartureDate().getYear() >= scandal.getStartYear())
+        }
         scandalRepository.save(scandal);
-        return "redirect:/admin/home";
+        return "redirect:/admin";
     }
 
     @GetMapping("/check")

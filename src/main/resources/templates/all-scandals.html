@@ -1,32 +1,30 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Afera App - All Scandals</title>
-    <link rel="stylesheet" th:href="@{/css/styles.css}">
+    <title>All Scandals</title>
 </head>
 <body>
-<div class="container">
-    <h1>Current Scandals List</h1>
-    <table>
-        <thead>
-        <tr>
-            <th>Name</th>
-            <th>Action</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr th:each="scandal : ${scandals}">
-            <td th:text="${scandal.name}">Scandal Name</td>
-            <td>
-                <a th:href="@{/all-scandals/specific/{id}(id=${scandal.id})}" class="btn">Details</a>
-            </td>
-        </tr>
-        </tbody>
-    </table>
-    <div class="footer">
-        <a th:href="@{/report/show}" class="btn-primary">Report New Scandal</a>
-    </div>
-</div>
+<h1>Verified Scandals</h1>
+
+<a th:href="@{/report/show}"><button>Report a New Scandal</button></a>
+<br><br>
+
+<table border="1">
+    <thead>
+    <tr>
+        <th>Name</th>
+        <th>Action</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="scandal : ${scandals}">
+        <td th:text="${scandal.name}"></td>
+        <td>
+            <a th:href="@{/all-scandals/{id}(id=${scandal.id})}">View Details</a>
+        </td>
+    </tr>
+    </tbody>
+</table>
 </body>
 </html>

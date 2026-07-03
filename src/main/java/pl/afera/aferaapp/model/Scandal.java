@@ -1,4 +1,4 @@
-package pl.afera.aferaapp;
+package pl.afera.aferaapp.model;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
@@ -16,6 +16,7 @@ import java.util.List;
 @RequiredArgsConstructor(access = AccessLevel.PUBLIC)
 @AllArgsConstructor(access = AccessLevel.PUBLIC)
 @Entity
+@Table(name = "scandals")
 public class Scandal {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -30,16 +31,16 @@ public class Scandal {
 //TODO: zmien nazwe tabel laczonych- patrz punkt XXIII
     @ManyToMany
     @JoinTable(
-            name = "Scandal_Parties",
-            joinColumns = @JoinColumn(name = "scandal"),
-            inverseJoinColumns = @JoinColumn(name = "party")
+            name = "scandal_parties",
+            joinColumns = @JoinColumn(name = "scandalId"),
+            inverseJoinColumns = @JoinColumn(name = "partieId")
     )
     private List<Party> associatedPoliticalParties = new ArrayList<>();
     @ManyToMany
     @JoinTable(
-            name = "Scandal_Politicians",
-            joinColumns = @JoinColumn(name = "scandal"),
-            inverseJoinColumns = @JoinColumn(name = "politician")
+            name = "scandal_politicians",
+            joinColumns = @JoinColumn(name = "scandalId"),
+            inverseJoinColumns = @JoinColumn(name = "politicianId")
     )
     private List<Politician> associatedPoliticians = new ArrayList<>();
     private BigDecimal confirmedEmbezzledAmountOfMoney;

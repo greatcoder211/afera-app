@@ -27,7 +27,7 @@ Dla każdej afery:
 [docelowo admin ma swoją listę afer, aferę z publicznej listy, może sobie "przyciągnąć" i nad nią popracować(np. jak zauważy jakieś kłamstwo/niespójność/nieścisłość)]
    (b) Sprawdź zgłoszenia -> pokaże mu się lista zgłoszeń, która może zaakcpetować/odrzucić
 [także później: edytować]
-
+// (i) -> (i) dto < architektura heksagonalna
 ---Endpointy---
 1) Admin
 "/admin": wyjściowy widok admina

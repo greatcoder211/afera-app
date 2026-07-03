@@ -1,7 +1,7 @@
-create table parties(id BIGINT(255) AUTO_INCREMENT PRIMARY KEY, name VARCHAR(255), confirmedEmbezzledAmountOfMoney DECIMAL(19, 2), unconfirmedEmbezzledAmountOfMoney DECIMAL(19, 2));
-create table politicians(id BIGINT(255), firstName VARCHAR(255), lastName VARCHAR(255), confirmedEmbezzledAmountOfMoney DECIMAL(19, 2), unconfirmedEmbezzledAmountOfMoney DECIMAL(19, 2));
-create table scandals(id BIGINT(255), name VARCHAR(255), description VARCHAR(10000), createdAt DATE, updatedAt DATE, startYear INT, endYear INT, confirmedEmbezzledAmountOfMoney DECIMAL(19, 2), unconfirmedEmbezzledAmountOfMoney DECIMAL(19, 2));
-create table memberships(id BIGINT(255), party VARCHAR(255), entryDate DATE, departureDate DATE);
+create table parties(id BIGINT(255) AUTO_INCREMENT PRIMARY KEY, name VARCHAR(255));
+create table politicians(id BIGINT(255) AUTO_INCREMENT PRIMARY KEY, firstName VARCHAR(255), lastName VARCHAR(255));
+create table scandals(id BIGINT(255) AUTO_INCREMENT PRIMARY KEY, name VARCHAR(255), description VARCHAR(10000), createdAt TIMESTAMP, updatedAt TIMESTAMP, startYear INT, endYear INT, confirmedEmbezzledAmountOfMoney DECIMAL(19, 2), unconfirmedEmbezzledAmountOfMoney DECIMAL(19, 2));
+create table memberships(id BIGINT(255) AUTO_INCREMENT PRIMARY KEY, partyName VARCHAR(255), entryDate DATE, departureDate DATE);
 
 create table party_politicians(party_id BIGINT(255), politician_id BIGINT(255));
 create table scandal_parties(scandal_id BIGINT(255), party_id BIGINT(255));

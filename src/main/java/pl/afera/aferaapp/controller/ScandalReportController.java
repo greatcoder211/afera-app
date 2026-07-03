@@ -6,15 +6,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
-import pl.afera.aferaapp.Party;
-import pl.afera.aferaapp.Scandal;
-import pl.afera.aferaapp.ScandalReport;
-import pl.afera.aferaapp.repository.PartyRepository;
+import pl.afera.aferaapp.model.ScandalReport;
 import pl.afera.aferaapp.repository.ScandalReportRepository;
-import pl.afera.aferaapp.repository.ScandalRepository;
-
-import java.util.ArrayList;
-import java.util.List;
 
 @Slf4j
 @Controller
@@ -25,7 +18,6 @@ public class ScandalReportController {
         this.scandalReportRepository = scandalReportRepository;
     }
     @GetMapping("/show")
-    @ModelAttribute("report")
     public String showReportForm(Model model) {
         model.addAttribute("report", new ScandalReport());
         return "reportForm";

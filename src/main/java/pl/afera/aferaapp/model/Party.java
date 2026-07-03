@@ -1,4 +1,4 @@
-package pl.afera.aferaapp;
+package pl.afera.aferaapp.model;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
@@ -12,6 +12,7 @@ import java.util.List;
 @AllArgsConstructor(access = AccessLevel.PROTECTED)
 @Data
 @Entity
+@Table(name = "parties")
 public class Party {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -22,8 +23,8 @@ public class Party {
     @ManyToMany(targetEntity = Politician.class)
     @JoinTable(
             name = "party_politicians",
-            joinColumns = @JoinColumn(name = "party"),
-            inverseJoinColumns = @JoinColumn(name = "politician")
+            joinColumns = @JoinColumn(name = "partyId"),
+            inverseJoinColumns = @JoinColumn(name = "politicianId")
     )
     @Size(min = 1, message="Partia musi mieć przynajmniej jednego członka")
     private List<Politician> members = new ArrayList<>();

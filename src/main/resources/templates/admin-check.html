@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Check Reports</title>
+</head>
+<body>
+<h1>Scandal Reports</h1>
+<table border="1">
+    <thead>
+    <tr>
+        <th>Report ID</th>
+        <th>Scandal Name</th>
+        <th>Description</th>
+        <th>Sources</th>
+        <th>Comments</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="report : ${reports}">
+        <td th:text="${report.id}"></td>
+        <td th:text="${report.scandalName}"></td>
+        <td th:text="${report.scandalDescription}"></td>
+        <td th:text="${report.sources}"></td>
+        <td th:text="${report.additionalComments}"></td>
+    </tr>
+    </tbody>
+</table>
+<br>
+<a th:href="@{/admin}">Back to Dashboard</a>
+</body>
+</html>

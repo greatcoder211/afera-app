@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Add Scandal</title>
+</head>
+<body>
+<h1>Add New Scandal</h1>
+<form th:action="@{/admin/add}" th:object="${scandal}" method="post">
+    <div>
+        <label for="name">Scandal Name:</label>
+        <input type="text" id="name" th:field="*{name}" required />
+    </div>
+    <br>
+    <div>
+        <label for="description">Description:</label>
+        <textarea id="description" th:field="*{description}"></textarea>
+    </div>
+    <br>
+    <div>
+        <label for="startYear">Start Year:</label>
+        <input type="number" id="startYear" th:field="*{startYear}" required />
+    </div>
+    <br>
+    <div>
+        <label for="endYear">End Year:</label>
+        <input type="number" id="endYear" th:field="*{endYear}" required />
+    </div>
+    <br>
+    <button type="submit">Save</button>
+</form>
+<br>
+<a th:href="@{/admin}">Back to Dashboard</a>
+</body>
+</html>

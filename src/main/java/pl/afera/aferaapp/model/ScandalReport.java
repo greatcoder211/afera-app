@@ -1,16 +1,10 @@
-package pl.afera.aferaapp;
+package pl.afera.aferaapp.model;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.NonNull;
-import lombok.RequiredArgsConstructor;
-import org.hibernate.validator.constraints.URL;
-
-import java.util.List;
-import java.util.Optional;
 
 @Data
 //@RequiredArgsConstructor
@@ -26,6 +20,7 @@ public class ScandalReport {
     private String scandalName;
     @Size(min = 5, message = "Minimum 5 znaków")
     private String scandalDescription;
+    @Column(columnDefinition = "TEXT")
     private String sources;
     private String additionalComments;
 }
