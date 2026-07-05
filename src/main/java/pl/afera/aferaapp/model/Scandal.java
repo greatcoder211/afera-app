@@ -8,9 +8,12 @@ import lombok.Data;
 import lombok.RequiredArgsConstructor;
 
 import java.math.BigDecimal;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Data
 @RequiredArgsConstructor(access = AccessLevel.PUBLIC)
@@ -26,23 +29,22 @@ public class Scandal {
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
     @NotNull
-    private int startYear;
-    private int endYear;
-//TODO: zmien nazwe tabel laczonych- patrz punkt XXIII
+    private LocalDate startDate;
+    private LocalDate endDate;
     @ManyToMany
     @JoinTable(
             name = "scandal_parties",
-            joinColumns = @JoinColumn(name = "scandalId"),
-            inverseJoinColumns = @JoinColumn(name = "partieId")
+            joinColumns = @JoinColumn(name = "scandal_id"),
+            inverseJoinColumns = @JoinColumn(name = "party_id")
     )
-    private List<Party> associatedPoliticalParties = new ArrayList<>();
+    private Set<Party> associatedPoliticalParties = new HashSet<>();
     @ManyToMany
     @JoinTable(
             name = "scandal_politicians",
-            joinColumns = @JoinColumn(name = "scandalId"),
-            inverseJoinColumns = @JoinColumn(name = "politicianId")
+            joinColumns = @JoinColumn(name = "scandal_id"),
+            inverseJoinColumns = @JoinColumn(name = "politician_id")
     )
-    private List<Politician> associatedPoliticians = new ArrayList<>();
+    private Set<Politician> associatedPoliticians = new HashSet<>();
     private BigDecimal confirmedEmbezzledAmountOfMoney;
     private BigDecimal unconfirmedEmbezzledAmountOfMoney;
     @PrePersist

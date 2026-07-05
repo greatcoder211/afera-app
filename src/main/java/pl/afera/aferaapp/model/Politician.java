@@ -20,12 +20,8 @@ public class Politician {
     @ManyToMany(targetEntity = Membership.class)
     @JoinTable(
             name = "politician_memberships",
-            joinColumns = @JoinColumn(name = "politicianId"),
-            inverseJoinColumns = @JoinColumn(name = "membershipId")
+            joinColumns = @JoinColumn(name = "politician_id"),
+            inverseJoinColumns = @JoinColumn(name = "membership_id")
     )
     private List<Membership> memberships = new ArrayList<>();
-    //ile ukradł
-    private BigDecimal confirmedEmbezzledAmountOfMoney;
-    //ile możliwie ukradł
-    private BigDecimal unconfirmedEmbezzledAmountOfMoney;
 }

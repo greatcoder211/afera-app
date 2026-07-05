@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Party Scandal Summary</title>
+</head>
+<body>
+<h1>Scandal Count by Political Party</h1>
+
+<table border="1" cellpadding="5">
+    <thead>
+    <tr>
+        <th>Political Party</th>
+        <th>Number of Scandals</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="summary : ${summaries}">
+        <td th:text="${summary.partyName}"></td>
+        <td th:text="${summary.scandalCount}"></td>
+    </tr>
+    </tbody>
+</table>
+
+<br>
+<a th:href="@{/admin}">Back to Admin Dashboard</a>
+</body>
+</html>

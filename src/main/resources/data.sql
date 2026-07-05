@@ -24,12 +24,13 @@ values (7, 'Mateusz', 'Morawiecki');
 
 //to be continued, reszta do poprawy jesli chodzi o te "insert into" pierdoly, moze kiedys np. przy pkazji treningu h2 do tego wroce i guckne
 
-insert into scandals (name, description, createdAt, updatedAt, startYear, endYear, confirmedEmbezzledAmountOfMoney, unconfirmedEmbezzledAmountOfMoney)
-values ('Afera Rywina', 'Lapowka Miller Rywin i spolka', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 2002, 2003, 0.00, 70000000.00);
-insert into scandals (name, description, createdAt, updatedAt, startYear, endYear, confirmedEmbezzledAmountOfMoney, unconfirmedEmbezzledAmountOfMoney)
-values ('Afera Hazardowa', '700 milionow zamiast do budzetu poszlo do kieszeni', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 2009, 2009, 0.00, 550000000.00);
-insert into scandals (name, description, createdAt, updatedAt, startYear, endYear, confirmedEmbezzledAmountOfMoney, unconfirmedEmbezzledAmountOfMoney)
+insert into scandals (name, description, created_at, updated_at, start_date, end_date, confirmed_embezzled_amount_of_money, unconfirmed_embezzled_amount_of_money)
+values ('Afera Hazardowa', '700 milionow zamiast do budzetu poszlo do kieszeni', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, '2009-10-01', '2011-04-11', 0.00, 550000000.00)
+insert into scandals (name, description, created_at, updated_at, start_date, end_date, confirmed_embezzled_amount_of_money, unconfirmed_embezzled_amount_of_money)
 values ('Afera Funduszu Sprawiedliwości', 'grupa afera', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 2018, 2024, 280000000.00, 0.00);
+insert into scandals (name, description, created_at, updated_at, start_date, end_date, confirmed_embezzled_amount_of_money, unconfirmed_embezzled_amount_of_money)
+values ('Afera Amber Gold', 'Plichta i spółka rozdarli polaków z oszczędności ', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, '2009-01-27', '2012-09-20', 0.00, 850000000.00)
+
 
 insert into memberships(id, partyId, entryDate, departureDate) values(1, 1, '1999-04-15', '2021-03-18');
 insert into memberships(id, partyId, entryDate) values(2, 3, '2023-05-03');

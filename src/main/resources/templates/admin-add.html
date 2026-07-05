@@ -12,22 +12,50 @@
         <input type="text" id="name" th:field="*{name}" required />
     </div>
     <br>
+
     <div>
         <label for="description">Description:</label>
         <textarea id="description" th:field="*{description}"></textarea>
     </div>
     <br>
+
     <div>
-        <label for="startYear">Start Year:</label>
-        <input type="number" id="startYear" th:field="*{startYear}" required />
+        <label for="startDate">Start Date:</label>
+        <input type="date" id="startDate" th:field="*{startDate}" required />
     </div>
     <br>
+
     <div>
-        <label for="endYear">End Year:</label>
-        <input type="number" id="endYear" th:field="*{endYear}" required />
+        <label for="endDate">End Date:</label>
+        <input type="date" id="endDate" th:field="*{endDate}" />
     </div>
     <br>
-    <button type="submit">Save</button>
+
+    <div>
+        <label for="confirmedMoney">Confirmed Embezzled Amount ($):</label>
+        <input type="number" step="0.01" id="confirmedMoney" th:field="*{confirmedEmbezzledAmountOfMoney}" />
+    </div>
+    <br>
+
+    <div>
+        <label for="unconfirmedMoney">Unconfirmed Embezzled Amount ($):</label>
+        <input type="number" step="0.01" id="unconfirmedMoney" th:field="*{unconfirmedEmbezzledAmountOfMoney}" />
+    </div>
+    <br>
+
+    <div>
+        <label for="politicians">Associated Politicians:</label><br>
+        <select id="politicians" th:field="*{associatedPoliticians}" multiple="multiple" style="height: 150px; min-width: 250px;">
+            <option th:each="politician : ${allPoliticians}"
+                    th:value="${politician.id}"
+                    th:text="${politician.firstName + ' ' + politician.lastName}">
+            </option>
+        </select>
+        <p><small>Hold CTRL (or CMD on Mac) to select multiple.</small></p>
+    </div>
+    <br>
+
+    <button type="submit">Save Scandal</button>
 </form>
 <br>
 <a th:href="@{/admin}">Back to Dashboard</a>

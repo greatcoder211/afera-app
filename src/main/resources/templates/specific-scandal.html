@@ -14,10 +14,40 @@
 
 <div>
     <strong>Timeframe:</strong>
-    <span th:text="${scandal.startYear}"></span> - <span th:text="${scandal.endYear}"></span>
+    <span th:text="${scandal.startDate}"></span> - <span th:text="${scandal.endDate}"></span>
+</div>
+
+<div>
+    <strong>Confirmed Embezzled Amount:</strong>
+    $<span th:text="${scandal.confirmedEmbezzledAmountOfMoney}"></span>
+</div>
+
+<div>
+    <strong>Unconfirmed Embezzled Amount:</strong>
+    $<span th:text="${scandal.unconfirmedEmbezzledAmountOfMoney}"></span>
+</div>
+
+<div>
+    <strong>Associated Politicians:</strong>
+    <ul>
+        <!-- Pętla iterująca po kolekcji Set<Politician> -->
+        <li th:each="politician : ${scandal.associatedPoliticians}"
+            th:text="${politician.firstName + ' ' + politician.lastName}">
+        </li>
+    </ul>
+</div>
+
+<div>
+    <strong>Associated Parties:</strong>
+    <ul>
+        <!-- Pętla iterująca po kolekcji Set<Party> -->
+        <li th:each="party : ${scandal.associatedPoliticalParties}"
+            th:text="${party.name}">
+        </li>
+    </ul>
 </div>
 
 <br>
-<a th:href="@{/all-scandals}">Back to All Scandals</a>
+<a th:href="@{/scandals/all}">Back to All Scandals</a>
 </body>
 </html>

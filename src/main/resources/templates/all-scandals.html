@@ -21,7 +21,7 @@
     <tr th:each="scandal : ${scandals}">
         <td th:text="${scandal.name}"></td>
         <td>
-            <a th:href="@{/all-scandals/{id}(id=${scandal.id})}">View Details</a>
+            <a th:href="@{/scandals/{id}(id=${scandal.id})}">View Details</a>
         </td>
     </tr>
     </tbody>

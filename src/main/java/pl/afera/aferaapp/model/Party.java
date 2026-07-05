@@ -23,12 +23,9 @@ public class Party {
     @ManyToMany(targetEntity = Politician.class)
     @JoinTable(
             name = "party_politicians",
-            joinColumns = @JoinColumn(name = "partyId"),
-            inverseJoinColumns = @JoinColumn(name = "politicianId")
+            joinColumns = @JoinColumn(name = "party_id"),
+            inverseJoinColumns = @JoinColumn(name = "politician_id")
     )
     @Size(min = 1, message="Partia musi mieć przynajmniej jednego członka")
     private List<Politician> members = new ArrayList<>();
-//TODO: tutaj poniższe dwa pola
-    private BigDecimal confirmedEmbezzledAmountOfMoney;
-    private BigDecimal unconfirmedEmbezzledAmountOfMoney;
 }

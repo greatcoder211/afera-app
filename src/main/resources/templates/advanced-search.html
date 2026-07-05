@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Advanced Search (OR Logic)</title>
+</head>
+<body>
+<h1>Advanced Search (Description OR Party)</h1>
+
+<form th:action="@{/analysis/advanced-search}" method="get">
+    <div>
+        <label for="keyword">Description Keyword:</label>
+        <input type="text" id="keyword" name="keyword" th:value="${keyword}" />
+    </div>
+    <br>
+    <div>
+        <label for="partyName">Party Name:</label>
+        <input type="text" id="partyName" name="partyName" th:value="${partyName}" />
+    </div>
+    <br>
+    <button type="submit">Search</button>
+    <a th:href="@{/analysis/advanced-search}"><button type="button">Clear</button></a>
+</form>
+
+<hr>
+
+<div th:if="${scandals != null}">
+    <h2>Results</h2>
+    <table border="1" cellpadding="5">
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Description</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="scandal : ${scandals}">
+            <td th:text="${scandal.id}"></td>
+            <td th:text="${scandal.name}"></td>
+            <td th:text="${scandal.description}"></td>
+        </tr>
+        </tbody>
+    </table>
+    <p th:if="${scandals.isEmpty()}" style="color: red;">No scandals found.</p>
+</div>
+
+<br>
+<a th:href="@{/admin}">Back to Admin Dashboard</a>
+</body>
+</html>

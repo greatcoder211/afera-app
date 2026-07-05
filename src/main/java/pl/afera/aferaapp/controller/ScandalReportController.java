@@ -6,8 +6,12 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
+import pl.afera.aferaapp.model.Politician;
+import pl.afera.aferaapp.model.Scandal;
 import pl.afera.aferaapp.model.ScandalReport;
 import pl.afera.aferaapp.repository.ScandalReportRepository;
+
+import java.util.Set;
 
 @Slf4j
 @Controller

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Scandal Full Report</title>
+</head>
+<body>
+<h1 th:text="'Full Report: ' + ${scandal.name}">Scandal Name</h1>
+<p><strong>Description:</strong> <span th:text="${scandal.description}"></span></p>
+
+<hr>
+
+<h2>Involved Politicians (Fetched via JOIN FETCH)</h2>
+
+<div th:if="${scandal.associatedPoliticians.isEmpty()}">
+    <p>No politicians found for this scandal using the fetch query.</p>
+</div>
+
+<ul th:unless="${scandal.associatedPoliticians.isEmpty()}">
+    <li th:each="politician : ${scandal.associatedPoliticians}"
+        th:text="${politician.firstName + ' ' + politician.lastName}">
+    </li>
+</ul>
+
+<br>
+<a th:href="@{/scandals/all}">Back to All Scandals</a>
+</body>
+</html>

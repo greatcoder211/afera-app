@@ -15,16 +15,18 @@ public class Membership {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String partyName;
+    @ManyToOne
+    @JoinColumn(name = "party_id")
+    private Party party;
     private LocalDate entryDate;
     private LocalDate departureDate;
-    public Membership(String partyName, LocalDate entryDate, LocalDate departureDate) {
-        this.partyName = partyName;
+    public Membership(Party party, LocalDate entryDate, LocalDate departureDate) {
+        this.party = party;
         this.entryDate = entryDate;
         this.departureDate = departureDate;
     }
-    public Membership(String partyName, LocalDate entryDate) {
-        this.partyName = partyName;
+    public Membership(Party party, LocalDate entryDate) {
+        this.party = party;
         this.entryDate = entryDate;
         departureDate = LocalDate.of(Year.now().getValue(), -1, -1);
     }

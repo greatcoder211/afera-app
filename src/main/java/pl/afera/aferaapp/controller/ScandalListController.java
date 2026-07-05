@@ -6,18 +6,21 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import pl.afera.aferaapp.model.Politician;
 import pl.afera.aferaapp.model.Scandal;
 import pl.afera.aferaapp.repository.ScandalRepository;
 
+import java.util.Set;
+
 @Slf4j
 @Controller
-@RequestMapping("/all-scandals")
+@RequestMapping("/scandals")
 public class ScandalListController {
     private final ScandalRepository scandalRepository;
     public ScandalListController(ScandalRepository scandalRepository) {
         this.scandalRepository = scandalRepository;
     }
-    @GetMapping()
+    @GetMapping("/all")
     public String overall(Model model){
         Iterable<Scandal> scandals = scandalRepository.findAll();
         model.addAttribute("scandals", scandals);
@@ -29,5 +32,11 @@ public class ScandalListController {
                 .orElseThrow(() -> new RuntimeException("Takiej afery nie mamy jeszcze w naszej bazie!"));
         model.addAttribute("scandal", scandal);
         return "specific-scandal";
+    }
+    @GetMapping("/full-report/{id}")
+    public String scandalWithThieves(@PathVariable("id") Long id, Model model){
+        Scandal scandal = scandalRepository.scandalWithPoliticians(id).orElseThrow();
+        model.addAttribute("scandal", scandal);
+        return "full-report";
     }
 }

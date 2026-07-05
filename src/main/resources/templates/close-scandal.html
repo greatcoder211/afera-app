@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Scandal Closed</title>
+    <style>
+        .success { color: green; font-weight: bold; }
+    </style>
+</head>
+<body>
+<h1>Scandal Closed Successfully!</h1>
+
+<p class="success">The case "<span th:text="${scandal.name}"></span>" has been officially closed.</p>
+
+<h3>Final Verdict:</h3>
+<ul>
+    <li><strong>Closing Date:</strong> <span th:text="${scandal.endDate}"></span></li>
+    <li><strong>Total Confirmed Embezzled Money:</strong> $<span th:text="${scandal.confirmedEmbezzledAmountOfMoney}"></span></li>
+    <li><strong>Remaining Unconfirmed Money:</strong> $<span th:text="${scandal.unconfirmedEmbezzledAmountOfMoney}"></span></li>
+</ul>
+
+<br>
+<a th:href="@{/admin}">Back to Admin Dashboard</a>
+</body>
+</html>

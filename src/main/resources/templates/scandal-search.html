@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Search Scandals</title>
+</head>
+<body>
+<h1>Search Scandals</h1>
+
+<form th:action="@{/admin/search}" method="get">
+    <div>
+        <label for="scandalNameSnippet">Scandal Name Contains:</label>
+        <input type="text" id="scandalNameSnippet" name="scandalNameSnippet" th:value="${parameters?.scandalNameSnippet}" />
+    </div>
+    <br>
+
+    <div>
+        <label for="startYear">Started After (Year):</label>
+        <input type="number" id="startYear" name="startYear" th:value="${parameters?.startYear}" />
+    </div>
+    <br>
+
+    <div>
+        <label for="politicianLastName">Politician Last Name:</label>
+        <input type="text" id="politicianLastName" name="politicianLastName" th:value="${parameters?.politicianLastName}" />
+    </div>
+    <br>
+
+    <button type="submit">Search</button>
+    <a th:href="@{/admin/search}"><button type="button">Clear Filters</button></a>
+</form>
+
+<hr>
+
+<h2>Search Results</h2>
+
+<div th:if="${scandals != null and !scandals.isEmpty()}">
+    <table border="1" cellpadding="5">
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Start Date</th>
+            <th>Action</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="scandal : ${scandals}">
+            <td th:text="${scandal.id}"></td>
+            <td th:text="${scandal.name}"></td>
+            <td th:text="${scandal.startDate}"></td>
+            <td>
+                <a th:href="@{/scandals/{id}(id=${scandal.id})}">View Details</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+<div th:if="${scandals != null and scandals.isEmpty()}">
+    <p style="color: red;">No scandals found matching the given criteria.</p>
+</div>
+
+<br>
+<a th:href="@{/admin}">Back to Admin Dashboard</a>
+</body>
+</html>
