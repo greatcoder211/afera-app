@@ -3,8 +3,8 @@ package pl.afera.aferaapp.repository.criteriaTraining;
 import jakarta.persistence.criteria.Join;
 import jakarta.persistence.criteria.Predicate;
 import org.springframework.data.jpa.domain.Specification;
-import pl.afera.aferaapp.model.Party;
-import pl.afera.aferaapp.model.Scandal;
+import pl.afera.aferaapp.model.entity.Party;
+import pl.afera.aferaapp.model.entity.Scandal;
 
 import java.util.ArrayList;
 import java.util.List;

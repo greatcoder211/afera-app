@@ -4,7 +4,7 @@ import jakarta.persistence.criteria.Root;
 import jakarta.persistence.criteria.Subquery;
 import lombok.NonNull;
 import org.springframework.data.jpa.domain.Specification;
-import pl.afera.aferaapp.model.Scandal;
+import pl.afera.aferaapp.model.entity.Scandal;
 
 public class ScandalSubquerySpecifications {
     public static Specification<@NonNull Scandal> aboveAverageConfirmedAmount() {

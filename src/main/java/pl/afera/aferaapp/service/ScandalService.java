@@ -4,8 +4,8 @@ import jakarta.persistence.criteria.Join;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import pl.afera.aferaapp.model.Politician;
-import pl.afera.aferaapp.model.Scandal;
+import pl.afera.aferaapp.model.entity.Politician;
+import pl.afera.aferaapp.model.entity.Scandal;
 import pl.afera.aferaapp.repository.ScandalRepository;
 
 import java.math.BigDecimal;
