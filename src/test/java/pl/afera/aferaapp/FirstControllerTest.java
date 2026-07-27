@@ -6,13 +6,13 @@ import org.springframework.boot.webmvc.test.autoconfigure.WebMvcTest;
 import org.springframework.test.web.servlet.MockMvc;
 import pl.afera.aferaapp.controller.ScandalListController;
 import pl.afera.aferaapp.controller.ScandalReportController;
-import pl.afera.aferaapp.controller.WebConfig;
+import pl.afera.aferaapp.controller.WebController;
 
 import static org.hamcrest.Matchers.containsString;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
-@WebMvcTest({WebConfig.class, ScandalListController.class, ScandalReportController.class})
+@WebMvcTest({WebController.class, ScandalListController.class, ScandalReportController.class})
 public class FirstControllerTest {
     @Autowired
     private MockMvc mockMvc;

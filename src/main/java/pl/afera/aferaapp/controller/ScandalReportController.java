@@ -2,6 +2,7 @@ package pl.afera.aferaapp.controller;
 
 import jakarta.validation.Valid;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
@@ -23,13 +24,14 @@ public class ScandalReportController {
         return "reportForm";
     }
     @PostMapping()
+    @ResponseStatus(HttpStatus.CREATED)
     public String requestScandalReport(@Valid @ModelAttribute("report") ScandalReport report, Errors errors) {
         if(errors.hasErrors()){
             return "reportForm";
         }
         log.info("Request has been submitted: " + report);
         scandalReportRepository.save(report);
-        return "redirect:/all-scandals";
+        return "redirect:/scandals/all";
     }
 }
 

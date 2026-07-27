@@ -23,3 +23,6 @@ spring:
           github:
             client-id: ${GITHUB_CLIENT_ID_NEW}
             client-secret: ${GITHUB_CLIENT_SECRET_NEW}
+  data:
+    rest:
+      base-path: /api

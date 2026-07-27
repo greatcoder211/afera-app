@@ -1,7 +1,6 @@
 package pl.afera.aferaapp.controller;
 
-import jakarta.validation.Valid;
-import org.springframework.data.jpa.domain.Specification;
+import org.springframework.http.HttpStatus;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -10,7 +9,6 @@ import pl.afera.aferaapp.model.entity.Party;
 import pl.afera.aferaapp.model.entity.Politician;
 import pl.afera.aferaapp.model.entity.Scandal;
 import pl.afera.aferaapp.model.entity.ScandalReport;
-import pl.afera.aferaapp.repository.criteriaTraining.SearchKeyParameters;
 import pl.afera.aferaapp.repository.PartyRepository;
 import pl.afera.aferaapp.repository.PoliticianRepository;
 import pl.afera.aferaapp.repository.ScandalReportRepository;
@@ -45,17 +43,6 @@ public class AdminController {
         return "admin-home";
     }
 
-    @GetMapping("/search")
-    public String scandalSearch(@Valid @ModelAttribute("parameters") SearchKeyParameters parameters, Model model){
-        Specification<Scandal> specification = Specification.where(
-                ScandalService.beginAt(parameters.getStartYear())
-                        .and(ScandalService.hasPoliticianLastName(parameters.getPoliticianLastName()))
-                        .and(ScandalService.containsNameSnippet(parameters.getScandalNameSnippet())));
-        List<Scandal> scandals = scandalRepository.findAll(specification);
-        model.addAttribute("scandals", scandals);
-        return "scandal-search";
-    }
-
     @GetMapping("/add")
     public String showAddForm(Model model) {
         model.addAttribute("scandal", new Scandal());
@@ -64,6 +51,7 @@ public class AdminController {
     }
 
     @PostMapping("/add")
+    @ResponseStatus(HttpStatus.CREATED)
     public String processAdd(Scandal scandal) {
 //TODO: wynieść do serwisu
         Set<Party> associatedParties = new HashSet<>();
